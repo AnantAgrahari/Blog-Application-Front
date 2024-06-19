@@ -1,18 +1,20 @@
 import React,{useState,useEffect} from 'react'
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
+
 const AddBlog = () => {
     const [input,setInput]=useState({
         title:"",
         description:"",
         category:"",
     });
-
+        const navigate=useNavigate();
     const [file,setFile]=useState([]);
     const [categories,setCategories]=useState([]);
 
     useEffect(()=>{
         const fetchAllCategories=async()=>{
-            const res=await axios.get("",
+            const res=await axios.get("http://localhost:3000/api/v1/get/categories",
             {
                 headers:{
                     Authorization:`Bearer ${localStorage.getItem("token")}`,
@@ -23,9 +25,32 @@ const AddBlog = () => {
         };
         fetchAllCategories();
     },[]);
-     
+
+    const formdata=new FormData();
+    formdata.append("title",input.title);
+    formdata.append("category",input.category);
+    formdata.append("description",input.description);
+    formdata.append("thumbnail",file);
+
+
      const handleSubmit=async(e)=>{
         e.preventDefault();
+        try {
+            const res=await axios.post("http://localhost:3000/api/v1/add/blog",formdata,
+            {
+                    headers:{
+                        Authorization:`Bearer ${localStorage.getItem("token")}`,
+                    },
+                
+            }
+            );       //paste the api of addblog from backend//
+                alert(res.data.message);
+                navigate("/");
+        }
+
+         catch (error) {
+            alert(error.response.data.message);
+        }
      }
 
   return (

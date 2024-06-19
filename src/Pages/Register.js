@@ -1,5 +1,6 @@
-import React,{useState,useNavigate} from 'react';
+import React,{useState} from 'react';
 import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const Register = () => {
     const navigate=useNavigate();
@@ -12,7 +13,7 @@ const Register = () => {
      const handleSubmit=async(e)=>{
         e.preventDefault();
         try {
-          const res=await axios.post("",input);         //paste the register backend api inside the inverted commas//  //connection of frontend and backend//
+          const res=await axios.post("http://localhost:3000/api/v1/user/register",input);           //connection of frontend and backend//
           alert(res.data.message);
           navigate("/login");
 
@@ -24,7 +25,7 @@ const Register = () => {
   return (
     <>
        <div className='container-shadow'>
-        <h2 className='text-center my-3'>Sign up here</h2>
+        <h2 className='text-center my-3'>Sign up </h2>
         <div className='col=md-12 my-3 d-flex items-center justify-content-center'>
         <div className='row'>
             <form onSubmit={handleSubmit}>

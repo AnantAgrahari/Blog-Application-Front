@@ -1,8 +1,26 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react';
+import axios from "axios";
 import {Link} from "react-router-dom";
 
 const Home = () => {
-  return (
+        const [blogs,setBlogs]=useState([]);
+
+
+        useEffect(()=>{
+            const fetchAllBlogs=async()=>{
+                const res=await axios.get("http://localhost:3000/api/v1/get/allblogs",                 //paste the api of getallblogs from backend here//
+                {
+                    headers:{
+                        Authorization:`Bearer ${localStorage.getItem("token")}`,
+                    },
+                });
+                setBlogs(res.data);
+            };
+            fetchAllBlogs();
+
+        },[]);
+
+    return (
     <>
     <main class="my-5">
         <div class="container shadow-lg">
@@ -10,15 +28,18 @@ const Home = () => {
                 <h2 class="mb-5 my-3">
                     <strong>Latest posts</strong>
                 </h2>
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 mb-4">
+
+                <div className="row">
+                    {blogs && blogs.length>0 ?
+                    blogs.map((item)=>{
+                        return ( <div class="col-lg-4 col-md-12 mb-4">
                         <div class="card">
                             <div 
                             class="bg-image hover-overlay ripple"
                             data-mdb-ripple-color="light">
                                 <img
-                                src={`https://www.kindpng.com/picc/m/235-2350682_new-svg-image-small-user-login-icon-hd.png`}
-                                class="immg-fluid"
+                                src={`http://localhost:3000/${item.thumbnail}`}      //fill the port no.//
+                                class="img-fluid"
                                 />
                                 <a href="#!">
                                     <div 
@@ -28,14 +49,19 @@ const Home = () => {
                                 </a>
                             </div>
                             <div class="card-body">
-                                <h5 class="card-title">Demo</h5>
-                                <p class="card-text">Demo-content</p>
-                                <Link to={`/blog/1`} class="btn btn-primary">
+                                <h5 class="card-title">{item.title}</h5>
+                                <p class="card-text">{item.description}</p>
+                                <Link to={`/blog/${item._id}`} class="btn btn-primary">
                                     Read More
                                 </Link>
                             </div>
                     </div>
-                </div>
+                </div>)
+                    })
+                    :
+                     <h2>Loading...</h2>    
+                }
+                   
                 </div>
             </section>
         </div>

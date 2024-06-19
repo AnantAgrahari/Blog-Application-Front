@@ -53,12 +53,12 @@ return(
                                    <div className="div-inline mx-auto my-2 my-lg-0">
 
 
-                                    {token && token!= null ?               // if the user is logged in,then he will definitely have a token and then logout option will be shown to him//
+                                    {token && token!= null ? (              // if the user is logged in,then he will definitely have a token and then logout option will be shown to him//
                                     <>
                                      <button className="btn btn-primary">Welcome :{username}</button>  
                                      <button onClick={handleLogout} className="btn btn-primary">Logout</button>  
                                      </>
-                                     :(                                                 // if the user is not logged in,then login,register option will be shown to him//
+                                    ) :(                                                 // if the user is not logged in,then login,register option will be shown to him//
                                         <>
                                 
                                        <Link to={"/login"}>

@@ -7,10 +7,11 @@ const Login = () => {
         email:"",
         password:"",
     });
+
 const handleLogin=async(e)=>{
     e.preventDefault();
     try {
-        const res=await axios.post("",input);            //paste the login api from backend//
+        const res=await axios.post("http://localhost:3000/api/v1/user/login",input);            
          alert(res.data.message);
          localStorage.setItem("token",res.data.token);       ///token is that token which is generated in the backend once the user logins successfully//
          localStorage.setItem("username",res.data.name);
@@ -24,7 +25,7 @@ const handleLogin=async(e)=>{
   return (
     <>
      <div className='container-shadow'>
-        <h2 className='text-center my-3'>Sign up here</h2>
+        <h2 className='text-center my-3'>Login</h2>
         <div className='col=md-12 my-3 d-flex items-center justify-content-center'>
         <div className='row'>
             <form onSubmit={handleLogin}>
