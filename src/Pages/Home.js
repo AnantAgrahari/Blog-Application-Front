@@ -8,7 +8,7 @@ const Home = () => {
 
         useEffect(()=>{
             const fetchAllBlogs=async()=>{
-                const res=await axios.get("http://localhost:3000/api/v1/get/allblogs",                 //paste the api of getallblogs from backend here//
+                const res=await axios.get("https://blog-application-backend-2.onrender.com/api/v1/get/allblogs",                 //paste the api of getallblogs from backend here//
                 {
                     headers:{
                         Authorization:`Bearer ${localStorage.getItem("token")}`,
@@ -38,7 +38,7 @@ const Home = () => {
                             class="bg-image hover-overlay ripple"
                             data-mdb-ripple-color="light">
                                 <img
-                                src={`http://localhost:3000/${item.thumbnail}`}      //fill the port no.//
+                                src={`https://blog-application-backend-2.onrender.com/${item.thumbnail}`}      //fill the port no.//
                                 class="img-fluid"
                                 />
                                 <a href="#!">

@@ -9,7 +9,7 @@ const SingleBlog = () => {
 
     useEffect(()=>{
         const fetchSingleBlog=async()=>{
-            const res=await axios.get(`http://localhost:3000/api/v1/get/blog/${id}`,                 //see the video for filling the url//
+            const res=await axios.get(`https://blog-application-backend-2.onrender.com/api/v1/get/blog/${id}`,                 //see the video for filling the url//
             {
                 headers:{
                     Authorization:`Bearer ${localStorage.getItem("token")}`,
@@ -30,7 +30,7 @@ const SingleBlog = () => {
                 <h1 className='my-3'>{blog.title}</h1>
                 
                 <img 
-                src={`http://localhost:3000/${blog.thumbnail}`}               //fill the port no.here//
+                src={`https://blog-application-backend-2.onrender.com/${blog.thumbnail}`}               //fill the port no.here//
                 className='img img-responsive img-rounded my-3' alt=""
                 />
                 <p className='my-3'>{blog.description}</p>

@@ -11,7 +11,7 @@ const Login = () => {
 const handleLogin=async(e)=>{
     e.preventDefault();
     try {
-        const res=await axios.post("http://localhost:3000/api/v1/user/login",input);            
+        const res=await axios.post("https://blog-application-backend-2.onrender.com/api/v1/user/login",input);            
          alert(res.data.message);
          localStorage.setItem("token",res.data.token);       ///token is that token which is generated in the backend once the user logins successfully//
          localStorage.setItem("username",res.data.name);
