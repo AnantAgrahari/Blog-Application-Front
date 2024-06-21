@@ -29,10 +29,7 @@ const SingleBlog = () => {
             <div className='row'>
                 <h1 className='my-3'>{blog.title}</h1>
                 
-                <img 
-                src={`https://blog-application-backend-2.onrender.com/${blog.thumbnail}`}               //fill the port no.here//
-                className='img img-responsive img-rounded my-3' alt=""
-                />
+               
                 <p className='my-3'>{blog.description}</p>
             </div>
         </div>
