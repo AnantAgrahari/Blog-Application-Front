@@ -37,11 +37,8 @@ const Home = () => {
                             <div 
                             class="bg-image hover-overlay ripple"
                             data-mdb-ripple-color="light">
-                                {/* <img
-                                src={`https://blog-application-backend-2.onrender.com/${item.thumbnail}`}      //fill the port no.//
-                                class="img-fluid"
-                                /> */}
-                                cyfghvjbnmkl,
+                               
+                              
                                 <a href="#!">
                                     <div 
                                     class="mask"
