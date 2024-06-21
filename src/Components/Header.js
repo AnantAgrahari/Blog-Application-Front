@@ -10,7 +10,7 @@ const Header=()=>{
     const handleLogout=()=>{                              //handles the logout functionality//
             localStorage.removeItem("token");
             localStorage.removeItem("username");
-            alert("logout successfull");
+            // alert("logout successfull");
              navigate("/login");
     }
 
