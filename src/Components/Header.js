@@ -50,7 +50,7 @@ return(
                                    </Link>
                                    </li>
                                    </ul>
-                                   <div className="div-inline mx-auto my-2 my-lg-0">
+                                   <div className="div-inline mx-auto my-5 my-lg-0">
 
 
                                     {token && token!= null ? (              // if the user is logged in,then he will definitely have a token and then logout option will be shown to him//
